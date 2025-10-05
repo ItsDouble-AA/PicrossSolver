@@ -3,12 +3,12 @@ public class PicrossRowSolver{
     public PicrossRowSolver(){
 
     }
-    public int[] solveRow(int[] numArr, int[] match){
+    public int[] solveRow(int[] numArr, int[] match,int width){
         if(numArr.length==1 && numArr[0]==0){
             return new int[1];
         }
         
-        int[] answer = ListToArray(getConsistent(removeUnMatched(removeDuplicates(fillRows(getMinimum(numArr), 10)), match)));
+        int[] answer = ListToArray(getConsistent(removeUnMatched(removeDuplicates(fillRows(getMinimum(numArr), width)), match)));
         printRow(answer);
         return answer;
 
