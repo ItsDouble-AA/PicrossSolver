@@ -5,13 +5,23 @@ public class PicrossRowSolver{
     }
     public int[] solveRow(int[] numArr, int[] match,int width){
         if(numArr.length==1 && numArr[0]==0){
-            return new int[1];
+            return new int[width];
         }
-        
+        if(isMatchFull(match)){
+            return match;
+        }
         int[] answer = ListToArray(getConsistent(removeUnMatched(removeDuplicates(fillRows(getMinimum(numArr), width)), match)));
-        printRow(answer);
+        //printRow(answer);
         return answer;
 
+    }
+    private boolean isMatchFull(int[] match){
+        for(int i : match){
+            if(i==-1){
+                return false;
+            }
+        }
+        return true;
     }
     private ArrayList<ArrayList<Integer>> removeUnMatched(ArrayList<ArrayList<Integer>> rows, int[] match){
         for(int i = rows.size()-1;i>=0;i--){
